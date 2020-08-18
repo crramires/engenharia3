@@ -2,9 +2,18 @@ import axios from "axios";
 
 class Api{
     static async getWeather(town){
-        const response = await axios.get(`https://api.hgbrasil.com/weather?key=888eb4fc&city_name=${town}`);
-        return response.data.results
+        const response = new Weather (await (await axios.get(`https://api.hgbrasil.com/weather?key=888eb4fc&city_name=${town}`)).data.results);
+        return response;
     }
 }   
 
-Api.getWeather('Pelotas').then((value => {console.log(value)}));
+class Weather{
+    constructor({city, time, temp, description}){
+        this.city = city,
+        this.temp = temp,
+        this.time = time,
+        this.description = description,
+    }
+}
+
+Api.getWeather('Pelotas').then((value => {console.log(value)}))
