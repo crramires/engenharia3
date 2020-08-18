@@ -1,0 +1,10 @@
+import axios from "axios";
+
+class Api{
+    static async getWeather(town){
+        const response = await axios.get(`https://api.hgbrasil.com/weather?key=888eb4fc&city_name=${town}`);
+        return response.data.results
+    }
+}   
+
+Api.getWeather('Pelotas').then((value => {console.log(value)}));
