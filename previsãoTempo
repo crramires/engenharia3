@@ -2,7 +2,7 @@ import axios from "axios";
 
 class Api{
     static async getWeather(town){
-        const response = new Weather (await (await axios.get(`https://api.hgbrasil.com/weather?key=888eb4fc&city_name=${town}`)).data.results);
+        const response = new Weather ((await axios.get(`https://api.hgbrasil.com/weather?key=888eb4fc&city_name=${town}`)).data.results);
         return response;
     }
 }   
